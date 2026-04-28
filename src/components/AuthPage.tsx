@@ -2,7 +2,7 @@ import { motion } from "motion/react";
 import React, { useState } from "react";
 import { ShieldCheck, Mail, Lock, Chrome, ArrowLeft, Github, ArrowRight } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
-import { auth, googleProvider } from "../lib/firebase";
+import { auth, googleProvider, githubProvider } from "../lib/firebase";
 import { 
   signInWithPopup, 
   signInWithEmailAndPassword, 
@@ -23,11 +23,11 @@ export default function AuthPage() {
     setError(null);
   };
 
-  const handleSocialSignIn = async () => {
+  const handleSocialSignIn = async (provider: any) => {
     setIsLoading(true);
     setError(null);
     try {
-      await signInWithPopup(auth, googleProvider);
+      await signInWithPopup(auth, provider);
       navigate("/dashboard");
     } catch (err: any) {
       setError(err.message);
@@ -148,14 +148,18 @@ export default function AuthPage() {
           )}
           <div className="grid grid-cols-2 gap-4 mb-8">
             <button 
-              onClick={handleSocialSignIn}
+              onClick={() => handleSocialSignIn(googleProvider)}
               disabled={isLoading}
               className="flex items-center justify-center gap-3 py-3 px-4 bg-white/5 border border-white/10 rounded-xl hover:bg-white/10 transition-all group font-medium text-white disabled:opacity-50 disabled:cursor-not-allowed"
             >
               <Chrome className="w-5 h-5 group-hover:scale-110 transition-transform" />
               <span>Google</span>
             </button>
-            <button className="flex items-center justify-center gap-3 py-3 px-4 bg-white/5 border border-white/10 rounded-xl hover:bg-white/10 transition-all group font-medium text-white">
+            <button 
+              onClick={() => handleSocialSignIn(githubProvider)}
+              disabled={isLoading}
+              className="flex items-center justify-center gap-3 py-3 px-4 bg-white/5 border border-white/10 rounded-xl hover:bg-white/10 transition-all group font-medium text-white disabled:opacity-50 disabled:cursor-not-allowed"
+            >
               <Github className="w-5 h-5 group-hover:scale-110 transition-transform" />
               <span>GitHub</span>
             </button>

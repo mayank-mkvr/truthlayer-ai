@@ -1,10 +1,10 @@
 {
-  "projectId": "gen-lang-client-0565289887",
-  "appId": "1:719346437070:web:7c03b060192663ce5e799f",
-  "apiKey": "AIzaSyCJmTiZH0V_OCbiZdUFFiYXvtc6V68Pikk",
-  "authDomain": "gen-lang-client-0565289887.firebaseapp.com",
-  "firestoreDatabaseId": "ai-studio-ac92e676-c7b6-444a-a321-43e4578bd4c9",
-  "storageBucket": "gen-lang-client-0565289887.firebasestorage.app",
-  "messagingSenderId": "719346437070",
+  "projectId": "truthlayer-ai",
+  "appId": "1:939217387763:web:f0745b5908a351a37df786",
+  "apiKey": "AIzaSyDM31TRWORg0lzyjExy-fYNYcx97VENhb4",
+  "authDomain": "truthlayer-ai.firebaseapp.com",
+  "storageBucket": "truthlayer-ai.firebasestorage.app",
+  "messagingSenderId": "939217387763",
+  "projectNumber": "939217387763",
   "measurementId": ""
 }
