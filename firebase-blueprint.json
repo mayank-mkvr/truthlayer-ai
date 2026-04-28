@@ -1,0 +1,58 @@
+{
+  "entities": {
+    "User": {
+      "title": "User Profile",
+      "description": "Public and private user profile information.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string" },
+        "displayName": { "type": "string" },
+        "photoURL": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "email", "createdAt"]
+    },
+    "Audit": {
+      "title": "AI Fairness Audit",
+      "description": "Results of an AI bias detection audit.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "status": { "type": "string", "enum": ["pending", "processing", "completed"] },
+        "fairnessScore": { "type": "number" },
+        "biasDetectedCount": { "type": "number" },
+        "complianceStatus": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "status", "createdAt"]
+    },
+    "Report": {
+      "title": "Compliance Report",
+      "description": "Exported compliance documentation.",
+      "type": "object",
+      "properties": {
+        "auditId": { "type": "string" },
+        "userId": { "type": "string" },
+        "type": { "type": "string" },
+        "content": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["auditId", "userId", "type", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "User profile documents stored by UID."
+    },
+    "/audits/{auditId}": {
+      "schema": "Audit",
+      "description": "Top-level collection for audits."
+    },
+    "/reports/{reportId}": {
+      "schema": "Report",
+      "description": "Top-level collection for reports."
+    }
+  }
+}
